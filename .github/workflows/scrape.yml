@@ -1,0 +1,57 @@
+name: Daily Longevity Digest
+
+on:
+  schedule:
+    # 11:00 UTC = 9 PM AEST
+    - cron: '0 11 * * *'
+  workflow_dispatch: # Manual trigger button in GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Checkout gh-pages output history
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages-data
+        continue-on-error: true  # First run won't have this branch yet
+
+      - name: Restore previous output files
+        run: |
+          if [ -d "gh-pages-data/output" ]; then
+            mkdir -p output
+            cp -r gh-pages-data/output/* output/ 2>/dev/null || true
+            echo "✓ Restored $(ls output/digest_*.html 2>/dev/null | wc -l) previous digests"
+          else
+            echo "No previous output to restore (first run)"
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper
+        run: python scraper.py
+
+      - name: Build index page
+        run: python build_index.py
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          keep_files: true
+          commit_message: "📰 Digest for $(date -u +'%Y-%m-%d')"

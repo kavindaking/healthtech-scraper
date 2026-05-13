@@ -1,0 +1,79 @@
+{
+  "_comment": "Edit this file to customize what the scraper tracks. No code changes needed.",
+
+  "consumer_brands": [
+    "Rythm Health",
+    "Create Wellness",
+    "trycreate",
+    "Superpower",
+    "Function Health",
+    "InsideTracker",
+    "Levels Health",
+    "Lingo",
+    "Whoop",
+    "Oura",
+    "Eight Sleep",
+    "Bryan Johnson",
+    "Don't Die",
+    "Loyal",
+    "Tally Health",
+    "Elysium Health",
+    "Tru Niagen",
+    "Novos",
+    "Lifeforce",
+    "Neko Health"
+  ],
+
+  "longevity_keywords": [
+    "rapamycin", "metformin", "senolytic", "senolytics", "senescent",
+    "epigenetic clock", "biological age", "GrimAge", "Horvath clock",
+    "NAD", "NMN", "NR", "nicotinamide riboside",
+    "GLP-1", "semaglutide", "tirzepatide",
+    "autophagy", "mTOR", "AMPK", "sirtuin",
+    "telomere", "telomerase",
+    "stem cell", "cellular reprogramming", "Yamanaka",
+    "longevity", "lifespan", "healthspan", "anti-aging", "geroscience",
+    "VO2max", "ApoB", "Lp(a)",
+    "continuous glucose monitor", "CGM",
+    "Alzheimer", "dementia", "neurodegeneration",
+    "cardiovascular", "atherosclerosis"
+  ],
+
+  "high_priority_keywords": [
+    "FDA approval", "FDA approved", "Phase 3", "Phase III",
+    "clinical trial results", "breakthrough", "first-in-human",
+    "Series A", "Series B", "Series C", "raises", "funding round",
+    "acquired", "acquisition"
+  ],
+
+  "rss_feeds": [
+    {"name": "STAT News - Longevity", "url": "https://www.statnews.com/category/aging/feed/"},
+    {"name": "Endpoints News", "url": "https://endpts.com/feed/"},
+    {"name": "Fierce Biotech", "url": "https://www.fiercebiotech.com/rss/xml"},
+    {"name": "FDA Press Announcements", "url": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-announcements/rss.xml"},
+    {"name": "NIH News Releases", "url": "https://www.nih.gov/news-events/news-releases/feed.xml"},
+    {"name": "Nature Aging", "url": "https://www.nature.com/nataging.rss"},
+    {"name": "Science Daily - Aging", "url": "https://www.sciencedaily.com/rss/health_medicine/aging.xml"},
+    {"name": "Science Daily - Longevity", "url": "https://www.sciencedaily.com/rss/health_medicine/longevity.xml"},
+    {"name": "MedCity News", "url": "https://medcitynews.com/feed/"},
+    {"name": "BusinessWire Health", "url": "https://www.businesswire.com/portal/site/home/news/industries/?ndmViewId=news_view&ndmConfigId=1000914&newsLang=en&beanID=1885739267&viewID=industries_feed&category=health"}
+  ],
+
+  "_comment_pubmed": "PubMed queries — pulls last 7 days. Tune the query string to taste.",
+  "pubmed_queries": [
+    "longevity[Title/Abstract] AND humans[MeSH]",
+    "biological aging[Title/Abstract] AND clinical trial[Publication Type]",
+    "senolytic[Title/Abstract]",
+    "rapamycin[Title/Abstract] AND aging[Title/Abstract]"
+  ],
+
+  "biorxiv_categories": ["cell biology", "genetics", "molecular biology"],
+
+  "settings": {
+    "days_to_look_back": 3,
+    "min_score_for_digest": 2,
+    "max_items_per_source": 30,
+    "request_timeout_seconds": 15,
+    "user_agent": "longevity-news-scraper/1.0 (personal research tool)"
+  }
+}
